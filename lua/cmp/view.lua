@@ -86,10 +86,16 @@ view.open = function(self, ctx, sources)
           -- source order priority bonus.
           local priority = s:get_source_config().priority or ((#source_group - (i - 1)) * config.get().sorting.priority_weight)
 
-          for _, e in ipairs(s:get_entries(ctx)) do
+          -- @sakethv - Limit number of entries 
+          local entry_limit = s:get_source_config().entry_limit or config.get().default_entry_limit
+          for i, e in ipairs(s:get_entries(ctx)) do
             e.score = e.score + priority
             table.insert(entries, e)
             offset = math.min(offset, e:get_offset())
+
+            if (i == entry_limit) then
+                break
+            end
           end
         end
       end
