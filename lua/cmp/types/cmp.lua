@@ -150,7 +150,7 @@ cmp.ItemField = {
 ---@field public expand fun(args: cmp.SnippetExpansionParams)
 
 ---@class cmp.ExperimentalConfig
----@field public ghost_text cmp.GhostTextConfig|false
+---@field public ghost_text cmp.GhostTextConfig|boolean
 
 ---@class cmp.GhostTextConfig
 ---@field hl_group string
@@ -162,6 +162,7 @@ cmp.ItemField = {
 ---@field public trigger_characters string[]|nil
 ---@field public keyword_pattern string|nil
 ---@field public keyword_length integer|nil
+---@field public max_item_count integer|nil
 ---@field public group_index integer|nil
 ---@field public entry_filter nil|function(entry: cmp.Entry, ctx: cmp.Context): boolean
 
